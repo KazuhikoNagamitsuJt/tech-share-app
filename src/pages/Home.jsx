@@ -2,24 +2,17 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSearch } from '../hooks/useSearch';
 
-// // src/pages/Home.jsx
-// export default function Home() {
-//   return <div>記事一覧はここに表示します。</div>;
-// }
-
 export default function Home() {
   const [articles, setArticles] = useState([]);
   const { searchQuery, setSearchQuery, filteredArticles } = useSearch(articles);
 
   useEffect(() => {
-    // fetch('http://localhost:3000/articles')
     fetch(`${import.meta.env.VITE_API_URL}/articles`)
     .then((res) => res.json())
       .then((data) => setArticles(data));
   }, []);
 
   return (
-
     <div>
       <div className="mb-8">
         <input
@@ -32,10 +25,7 @@ export default function Home() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-        {/* {articles.map((article) => ( */}
         {filteredArticles.map((article) => (
-
             <Link
             key={article.id}
             to={`/articles/${article.id}`}
@@ -51,13 +41,10 @@ export default function Home() {
             </Link>
         ))}
 
-        {/* {articles.length === 0 && ( */}
-
         {filteredArticles.length === 0 && (
             <p className="text-gray-500">記事が見つかりません。</p>
         )}
       </div>
     </div>
-
   );
 }

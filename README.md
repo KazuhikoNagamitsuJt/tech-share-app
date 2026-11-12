@@ -1,13 +1,11 @@
 # TechShare - 技術ナレッジ共有アプリ
 
-日々の学習や技術的な知見をMarkdown形式で投稿・共有・検索できるWebアプリケーションです。
+## 1. アプリの概要
 
-## 公開URL
+日々のプログラミング学習や開発で得た技術的な知見を、Markdown形式で投稿・共有・検索できるWebアプリケーションです。
+リアルタイムプレビュー付きのエディタやキーワード検索機能を備え、効率的にナレッジを蓄積・閲覧できます。
 
-- **フロントエンド (Vercel):** https://tech-share-app-jade.vercel.app/
-- **バックエンドAPI (Render):** https://tech-share-app-sv1q.onrender.com/articles
-
-## 主な機能
+## 2．主な機能
 
 - 記事の一覧表示およびキーワードによるリアルタイム検索機能
 - Markdown形式（見出し、リスト、コードブロック、引用など）での記事詳細表示
@@ -15,25 +13,45 @@
 - ログインユーザーによる記事の新規作成（リアルタイムプレビュー付き）
 - 投稿者本人による記事の編集・削除機能
 
-## 使用技術
+## 3. 公開URL
 
-- **フロントエンド:** React, React Router, Tailwind CSS, React Markdown, Vite
+- **フロントエンド (Vercel):** https://tech-share-app-jade.vercel.app/
+- **バックエンドAPI (Render):** https://tech-share-app-sv1q.onrender.com/articles
+
+## 4. 技術スタックと選んだ理由
+
+- **フロントエンド:** React / Vite / React Router / Tailwind CSS / React Markdown
+  - **選定理由:** コンポーネント単位（Atomic Design）でUIを効率よく再利用できる点と、Viteによる高速な開発環境、Tailwind CSSによる統一感のあるレスポンシブデザインを素早く構築できるため採用しました。また、フレームワークやVS Codeとの親和性が高く、GitHub連携から公開までの一連の開発作業をスムーズに完結できる点も考慮しています。
 - **バックエンド:** JSON Server
-- **インフラ / デプロイ:** Vercel, Render, GitHub
+  - **選定理由:** 学習およびプロトタイプ開発において、REST API（GET / POST / PATCH / DELETE）とデータの永続化をシンプルかつ迅速に構築できるため選定しました。また、AIの急速な普及を見据え、Pythonなどのバックエンド技術とも親和性の高いJSON形式（`db.json`）でデータを扱える点も考慮しています。
+- **インフラ / デプロイ:** Vercel / Render / GitHub
+  - **選定理由:** GitHubと連携することでコードのプッシュ時に自動デプロイが行われ、開発から公開までの作業をシームレスに完結できるため採用しました。
 
-<!-- # React + Vite
+## 5. 工夫した点・難しかった点
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- **工夫した点:** 検索ロジックをカスタムフック（`useSearch`）に切り出し、`useMemo` を活用することで検索入力時の不要な再計算を防ぎました。また、記事詳細とエディタのプレビューの両方で同じMarkdownスタイルが適用されるようCSSを整えました。
+- **難しかった点:** Context API（`AuthContext`）を用いたログイン状態の共有や、ログイン状態・投稿者名に応じたボタン表示とページ遷移（未ログイン時の `/create` リダイレクト）の制御に苦労しましたが、各画面での条件分岐を整理することで解決しました。また、Windows上での開発環境構築においてはDockerやWSL2など関連ツールが多く複雑さを感じましたが、乗り越えたことで大きな手応えを得られました（個人PCのため、可能であればVirtualBox内で環境を完結させたいと感じました）。
 
-Currently, two official plugins are available:
+## 6. ローカルでの起動手順
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project. -->
+1. リポジトリをクローンしてディレクトリへ移動します。
+   ```bash
+   git clone https://github.com
+   cd tech-share-app
+   ```
+2. 依存パッケージをインストールします。
+   ```bash
+   npm install
+   ```
+3. プロジェクト直下に `.env` ファイルを作成し、ローカルAPIのURLを設定します。
+   ```env
+   VITE_API_URL=http://localhost:3000
+   ```
+4. バックエンド（JSON Server）を起動します（別ターミナル）。
+   ```bash
+   npx json-server db.json --port 3000
+   ```
+5. フロントエンド（Vite）を起動し、ブラウザで `http://localhost:5173` にアクセスします。
+   ```bash
+   npm run dev
+   ```

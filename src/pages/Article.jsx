@@ -3,11 +3,6 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { useAuth } from '../contexts/AuthContext';
 
-// // src/pages/Article.jsx
-// export default function Article() {
-//   return <div>記事詳細ページ（準備中）</div>;
-// }
-
 export default function Article() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -15,7 +10,6 @@ export default function Article() {
   const [article, setArticle] = useState(null);
 
   useEffect(() => {
-    // fetch(`http://localhost:3000/articles/${id}`)
     fetch(`${import.meta.env.VITE_API_URL}/articles/${id}`)
 
       .then((res) => res.json())
@@ -24,7 +18,6 @@ export default function Article() {
 
   const handleDelete = async () => {
     if (!window.confirm('この記事を削除しますか？')) return;
-    // await fetch(`http://localhost:3000/articles/${id}`, { method: 'DELETE' });
     await fetch(`${import.meta.env.VITE_API_URL}/articles/${id}`, { method: 'DELETE' });
     
     navigate('/');

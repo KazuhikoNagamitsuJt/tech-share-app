@@ -1,8 +1,3 @@
-// // src/pages/Editor.jsx
-// export default function Editor() {
-//   return <div>記事作成・編集ページ（準備中）</div>;
-// }
-
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
@@ -20,7 +15,6 @@ export default function Editor() {
   useEffect(() => {
     if (!user) { navigate('/'); return; }
     if (isEditMode) {
-    //   fetch(`http://localhost:3000/articles/${id}`)
       fetch(`${import.meta.env.VITE_API_URL}/articles/${id}`)
         .then((res) => res.json())
         .then((data) => { setTitle(data.title); setContent(data.content); });
@@ -36,7 +30,6 @@ export default function Editor() {
       author: user.name,
       createdAt: isEditMode ? undefined : new Date().toISOString().split('T')[0],
     };
-    // const url = isEditMode ? `http://localhost:3000/articles/${id}` : 'http://localhost:3000/articles';
     const url = isEditMode
     ? `${import.meta.env.VITE_API_URL}/articles/${id}`
     : `${import.meta.env.VITE_API_URL}/articles`;
