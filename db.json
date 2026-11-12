@@ -1,0 +1,61 @@
+{
+  "articles": [
+    {
+      "id": "1",
+      "title": "React Hooksの完全理解",
+      "content": "## useStateとは\n状態を管理するためのフックです。\n\n## useEffectとは\n副作用を扱うためのフックです。API通信などで使います。\n\n```javascript\nconsole.log('Hello World');\n```",
+      "author": "Tech Taro",
+      "createdAt": "2026-05-14"
+    },
+    {
+      "id": "2",
+      "title": "Tailwind CSSで爆速コーディング",
+      "content": "Tailwind CSSを使えば、HTML（JSX）から離れることなくスタイリングが完結します。\n\n- ユーティリティファースト\n- レスポンシブ対応が簡単\n- クラス名を考える手間が省ける",
+      "author": "Front Engineer",
+      "createdAt": "2026-05-15"
+    },
+    {
+      "title": "テスト",
+      "content": "# 見出し１\nこれは **太字**　です。\n\n## 見出し２\n\n- リスト１\n- リスト２\n\nこれは `コード` です。\n\n> 引用の例です。",
+      "author": "Tech Taro",
+      "createdAt": "2026-11-12",
+      "id": "_myk1T_MV6Q"
+    },
+    {
+      "title": "改行のマークダウン",
+      "content": "# 見出し\n改行前\n改行後",
+      "author": "Tech Taro",
+      "createdAt": "2026-11-12",
+      "id": "EyJwLNQWAK8"
+    },
+    {
+      "title": "マークダウンについて。",
+      "content": "• __＋Enter（1回）： 単なる改行（<br>相当・すぐ下の行へ移動）　　\n\n• Enterを2回（間に空行を1行挟む）： 1行分の空行を入れる（<p>相当・段落分け）\n\n\n• Enterを1回だけ（スペースなし）： 改行されず前の文章とくっつく\n★(※くっつくのは、リアルタイムビューのみ)",
+      "author": "Tech Taro",
+      "createdAt": "2026-11-12",
+      "id": "3Wk83tG4V-0"
+    },
+    {
+      "title": "TOPページに戻るか？",
+      "content": "- 投稿ボタンを押すと、トップページに戻る。\n\n戻った。\n\n- 編集して、更新しても戻った。",
+      "author": "Tech Taro",
+      "createdAt": "2026-11-12",
+      "id": "Yl4loaL_lB4"
+    },
+    {
+      "title": "編集ボタンテスト",
+      "content": "編集テスト用  \n更新する。",
+      "author": "Tech Taro",
+      "createdAt": "2026-11-12",
+      "id": "quorxmbhj1I"
+    },
+    {
+      "title": "課題⑤確認場所一覧",
+      "content": "### 2. 確認箇所一覧表\n\n| 番号 | 確認項目 | ファイルパス（確認する行） | 該当コード（実装内容） |\n| :--- | :--- | :--- | :--- |\n| 1 | AuthContext の器を作成 | src/contexts/AuthContext.jsx（3行目） | const AuthContext = createContext(); |\n| 2-1 | ログイン状態（user）の管理 | src/contexts/AuthContext.jsx（6行目） | const [user, setUser] = useState(null); |\n| 2-2 | login 関数の定義 | src/contexts/AuthContext.jsx（8行目） | const login = () => setUser({ name: 'Tech Taro' }); |\n| 2-3 | logout 関数の定義 | src/contexts/AuthContext.jsx（9行目） | const logout = () => setUser(null); |\n| 2-4 | Provider で value を渡す | src/contexts/AuthContext.jsx（11行目〜15行目） | <AuthContext.Provider value={{ user, login, logout }}> |\n| 3 | useAuth カスタムフックの作成 | src/contexts/AuthContext.jsx（18行目） | export const useAuth = () => useContext(AuthContext); |\n| 4 | アプリ一番外側を AuthProvider で包む | src/App.jsx（8行目〜18行目） | <AuthProvider> ... </AuthProvider> |\n",
+      "author": "Tech Taro",
+      "createdAt": "2026-11-12",
+      "id": "zzn-tTPu3OI"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
